@@ -3203,7 +3203,7 @@ function ReaderFooter:addToMainMenu(menu_items)
 						display_name = T(_("Default (%1)"), display_name)
 					end
 
-					return T(_("Page font: %1"), display_name)
+					return T(_("Page number font: %1"), display_name)
 				end,
 				
 			callback = function(touchmenu_instance)
@@ -3284,7 +3284,7 @@ function ReaderFooter:addToMainMenu(menu_items)
 			},
 				-- About menu
 				{
-					text = _("About page header"),
+					text = _("About"),
 					keep_menu_open = true,
 					callback = function()
 						local rotation = Screen:getRotationMode()
