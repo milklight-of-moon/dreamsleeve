@@ -564,16 +564,17 @@ local about_text = _([[
 			  
 Reading the way grandma intended.
 
-  Page header can be displayed in reflowable documents (epub etc.), many of its features are customizable. Default settings can be set from the menu - simply longpress the checkmark and font option, and tap a button inside a numeric option.
+Page header is displayed in reflowable documents (epub etc). Default settings can be set via longpress on menu options, except for 'Font case' and 'Title candidates' options (per book only) and 'Save book margins to preset' (global default only). Presets can also be used to set a 'default' state.
 
-  Page number display respects native "Use reference page numbers" setting. It will center at the bottom on the first page of chapter, except on the cover page where it's hidden along with the title.
-You may need to adjust your book margins if your text is very close to the screen edge, as the header at 0 margins will render a line above/below the text. For the best view in two column mode, keep the left and right book margins in sync.
+The page header top and bottom margins are relative to the top and bottom book margins. Divider and fleurons margins are in turn relative to the page header.
 
-  Letter spacing works by inserting a Unicode space (U+200A hair space) between each character and does not effect page number. If no visible change appears, the glyph is missing in the font or its width is too small. You may check the font by using FontForge.
-  
-  Important: if you rename/move/delete the font you're using for any of your books, you will recieve an error on opening the book. Simply change the font before proceeding with anything aforementioned. You can replace the font for multiple books with a text editor, by going to the koreader root directory and opening settings.reader.lua. Under "BOOK SETTINGS" you will find hash blocks, each block representing saved settings for one book. Now you can mass replace any instance of a font.
-  
-  Using a smallcaps font is highly recommended. A tutorial is available for making a SC font with FontForge. It's a semi-automated process that should take just a few minutes.
+Settings are saved into a separate file, page_header_settings.lua which can be found in Koreader root folder. Each book generates a key based on the book's sidecar UUID.
+
+'Treat title pages as cover pages' is going to hide the page header on all chapter pages, displaying it on its subchapter pages of the highest level. 'Treat subchapters as normal pages' will hide the page header on the chapter page of the first level and display it for its subchapter pages.
+
+For decorative options to work select the font provided, or use your own and edit the glyph tables in lua for glyphs to display in the menu.
+
+Using a smallcaps font is highly recommended. A tutorial is available for making a SC font with FontForge. It's a semi-automated process that should take just a few minutes.
 https://pastebin.com/Rm8PrbEk
 ]])
 local orig_ReaderFooter_addToMainMenu = ReaderFooter.addToMainMenu
